@@ -180,11 +180,6 @@ const MoebiusMaterial = shaderMaterial(
       finalColor = mix(finalColor, uAccentColor, pulseStripe * 0.8);
       
       if (uHover > 0.0) {
-        // Digital glitch color shift
-        float glitchMask = step(0.97, sin(vUv.y * 80.0 + uTime * 10.0 + vNoise * 5.0));
-        vec3 glitchColor = vec3(1.0) - finalColor;
-        finalColor = mix(finalColor, glitchColor, glitchMask * uHover);
-        
         // Add chromatic aberration effect
         float aberration = sin(vUv.y * 100.0 + uTime * 15.0) * uHover * 0.3;
         finalColor.r += aberration;

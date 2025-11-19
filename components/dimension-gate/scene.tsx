@@ -11,11 +11,11 @@ import { MegastructureRings } from './megastructure-rings'
 import { VolumetricLight } from './volumetric-light'
 import { Suspense } from 'react'
 import { motion } from 'framer-motion'
-import { UnrealBloomPass } from 'three-stdlib'
+import { UnrealBloomPass, FilmPass } from 'three-stdlib'
 import { extend } from '@react-three/fiber'
 import { HolographicText } from './holographic-text'
 
-extend({ UnrealBloomPass })
+extend({ UnrealBloomPass, FilmPass })
 
 export function DimensionGateScene({ onNavigate }: { onNavigate?: (path: string) => void }) {
   return (
@@ -88,19 +88,23 @@ export function DimensionGateScene({ onNavigate }: { onNavigate?: (path: string)
       </Canvas>
       
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
           className="absolute top-8 left-8 text-primary font-mono text-xs space-y-2"
         >
+          <motion.div
+            animate={{ y: [0, -4, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-primary rounded-full animate-[pulse-glow_2s_ease-in-out_infinite]" />
             <span className="tracking-widest">GATEWAY: ACTIVE</span>
           </div>
           <div className="text-muted-foreground pl-4 space-y-0.5">
             <div>COORDINATES: [0, 0, ∞]</div>
-            <div>DIMENSION: MOEBIUS-01</div>
+            <div style={{ userSelect: 'none' }}>DIMENSION: MOEBIUS-01</div>
             <div>ENERGY FLUX: 147.3 TW</div>
             <div>STABILITY: 99.8%</div>
           </div>
@@ -108,6 +112,7 @@ export function DimensionGateScene({ onNavigate }: { onNavigate?: (path: string)
             <div className="text-secondary">QUANTUM THREADS: 42</div>
             <div className="text-muted-foreground">TACHYON FLOW: NOMINAL</div>
           </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -115,7 +120,7 @@ export function DimensionGateScene({ onNavigate }: { onNavigate?: (path: string)
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
           className="absolute top-8 right-8 text-primary font-mono text-xs text-right space-y-2"
-        >
+          >
           <div className="tracking-widest border-b border-primary/30 pb-2">
             DIMENSIONAL INTEGRITY
           </div>
@@ -142,7 +147,7 @@ export function DimensionGateScene({ onNavigate }: { onNavigate?: (path: string)
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3 }}
