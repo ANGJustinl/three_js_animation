@@ -92,25 +92,26 @@ export function DimensionGateScene({ onNavigate }: { onNavigate?: (path: string)
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="absolute top-8 left-8 text-primary font-mono text-xs space-y-2"
+          className="absolute top-8 left-8 font-mono text-xs space-y-2 z-20"
+          style={{ color: '#cbd5e1' }}
         >
           <motion.div
             animate={{ y: [0, -4, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-primary rounded-full animate-[pulse-glow_2s_ease-in-out_infinite]" />
+            <div className="w-2 h-2 rounded-full animate-[pulse-glow_2s_ease-in-out_infinite]" style={{ background: '#cbd5e1' }} />
             <span className="tracking-widest">GATEWAY: ACTIVE</span>
           </div>
-          <div className="text-muted-foreground pl-4 space-y-0.5">
-            <div>COORDINATES: [0, 0, ∞]</div>
-            <div style={{ userSelect: 'none' }}>DIMENSION: MOEBIUS-01</div>
-            <div>ENERGY FLUX: 147.3 TW</div>
-            <div>STABILITY: 99.8%</div>
+          <div className="pl-4 space-y-0.5">
+            <div style={{ color: '#cbd5e1', opacity: 0.8 }}>COORDINATES: [0, 0, ∞]</div>
+            <div style={{ color: '#cbd5e1', opacity: 0.8, userSelect: 'none' }}>DIMENSION: MOEBIUS-01</div>
+            <div style={{ color: '#cbd5e1', opacity: 0.8 }}>ENERGY FLUX: 147.3 TW</div>
+            <div style={{ color: '#cbd5e1', opacity: 0.8 }}>STABILITY: 99.8%</div>
           </div>
           <div className="mt-4 pt-2 border-t border-primary/30 space-y-0.5">
-            <div className="text-secondary">QUANTUM THREADS: 42</div>
-            <div className="text-muted-foreground">TACHYON FLOW: NOMINAL</div>
+            <div style={{ color: '#cbd5e1', opacity: 0.8 }}>QUANTUM THREADS: 42</div>
+            <div style={{ color: '#cbd5e1', opacity: 0.6 }}>TACHYON FLOW: NOMINAL</div>
           </div>
           </motion.div>
         </motion.div>
@@ -119,7 +120,8 @@ export function DimensionGateScene({ onNavigate }: { onNavigate?: (path: string)
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
-          className="absolute top-8 right-8 text-primary font-mono text-xs text-right space-y-2"
+          className="absolute top-8 right-8 font-mono text-xs text-right space-y-2 z-20"
+          style={{ color: '#cbd5e1' }}
           >
           <div className="tracking-widest border-b border-primary/30 pb-2">
             DIMENSIONAL INTEGRITY
@@ -131,17 +133,17 @@ export function DimensionGateScene({ onNavigate }: { onNavigate?: (path: string)
               { label: 'QUANTUM', value: 100 },
             ].map((item) => (
               <div key={item.label} className="flex items-center justify-end gap-3">
-                <span className="text-muted-foreground text-[10px]">{item.label}</span>
+                <span style={{ color: '#cbd5e1', opacity: 0.8, fontSize: '10px' }}>{item.label}</span>
                 <div className="w-24 h-1.5 bg-background border border-primary/30 relative overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${item.value}%` }}
                     transition={{ duration: 2, delay: 1 }}
-                    className="h-full bg-primary"
-                    style={{ boxShadow: '0 0 8px currentColor' }}
+                    className="h-full"
+                    style={{ background: '#cbd5e1', borderRadius: '2px' }}
                   />
                 </div>
-                <span className="text-[10px] w-8">{item.value}%</span>
+                <span style={{ color: '#cbd5e1', fontSize: '10px', width: '2em', textAlign: 'right' }}>{item.value}%</span>
               </div>
             ))}
           </div>
